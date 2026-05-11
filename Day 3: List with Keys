@@ -1,1 +1,40 @@
+✅ UserCard.jsx
+JSX
+function UserCard({ user }) {
+  return (
+    <div className="user-card">
+      <h3>{user.name}</h3>
+      <p>{user.email}</p>
+    </div>
+  );
+}
 
+export default UserCard;
+✅ UserList.jsx
+JSX
+import UserCard from "./UserCard";
+
+function UserList({ users }) {
+  // Empty array check
+  if (users.length === 0) {
+    return <p>No users found.</p>;
+  }
+
+  return (
+    <div>
+      {users.map((user) => (
+        <UserCard key={user.id} user={user} />
+      ))}
+    </div>
+  );
+}
+
+export default UserList;
+🚀 Usage
+JSX
+const users = [
+  { id: 1, name: "Pauline", email: "pauline@gmail.com" },
+  { id: 2, name: "John", email: "john@gmail.com" },
+];
+
+<UserList users={users} />
