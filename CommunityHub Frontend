@@ -1,1 +1,143 @@
+1. 🟦 App.jsx (Main Logic)
+JSX
+import { useState } from "react";
+import PostList from "./components/Post/PostList";
+import CreatePost from "./components/Post/CreatePost";
 
+function App() {
+  const [posts, setPosts] = useState([]);
+
+  const addPost = (post) => {
+    setPosts([...posts, post]);
+  };
+
+  return (
+    <>
+      <CreatePost addPost={addPost} />
+      <PostList posts={posts} />
+    </>
+  );
+}
+
+export default App;
+2. ✍️ CreatePost.jsx
+JSX
+import { useState } from "react";
+
+function CreatePost({ addPost }) {
+  const [title, setTitle] = useState("");
+  const [content, setContent] = useState("");
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    addPost({
+      title,
+      content,
+      author: "You",
+      date: new Date().toLocaleDateString(),
+      likes: 0,
+    });
+
+    setTitle("");
+    setContent("");
+  };
+
+  return (
+    <form onSubmit={handleSubmit}>
+      <input value={title} onChange={(e) => setTitle(e.target.value)} placeholder="Title" />
+      <textarea value={content} onChange={(e) => setContent(e.target.value)} />
+      <button type="submit">Post</button>
+    </form>
+  );
+}
+
+export default CreatePost;
+3. 📜 PostList.jsx
+JSX
+import PostCard from "./PostCard";
+
+function PostList({ posts }) {
+  return (
+    <div>
+      {posts.map((post, index) => (
+        <PostCard key={index} post={post} />
+      ))}
+    </div>
+  );
+}
+
+export default PostList;
+4. 🧾 PostCard.jsx (Bonus: Like feature)
+JSX
+import { useState } from "react";
+
+function PostCard({ post }) {
+  const [likes, setLikes] = useState(post.likes);
+
+  return (
+    <div>
+      <h3>{post.title}</h3>
+      <p>{post.content}</p>
+      <small>{post.author} • {post.date}</small>
+
+      <button onClick={() => setLikes(likes + 1)}>
+        👍 {likes}
+      </button>
+    </div>
+  );
+}
+
+export default PostCard;
+5. 🧭 Header.jsx
+JSX
+function Header() {
+  return (
+    <header>
+      <h1>CommunityHub</h1>
+      <nav>
+        <a href="#">Home</a>
+        <a href="#">Posts</a>
+        <a href="#">Profile</a>
+      </nav>
+      <button>Login</button>
+    </header>
+  );
+}
+
+export default Header;
+6. 📌 Sidebar.jsx
+JSX
+function Sidebar() {
+  return (
+    <aside>
+      <h3>About</h3>
+      <p>CommunityHub is a social platform.</p>
+
+      <h3>Popular Posts</h3>
+      <ul>
+        <li>React Tips</li>
+        <li>JavaScript Tricks</li>
+      </ul>
+
+      <h3>Tags</h3>
+      <span>#react</span>
+      <span>#webdev</span>
+    </aside>
+  );
+}
+
+export default Sidebar;
+7. 🦶 Footer.jsx
+JSX
+function Footer() {
+  return (
+    <footer>
+      <p>© 2026 CommunityHub</p>
+      <a href="#">Privacy</a>
+      <a href="#">Contact</a>
+    </footer>
+  );
+}
+
+export default Footer;
