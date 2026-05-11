@@ -1,1 +1,37 @@
+📌 Greeting.jsx
+JSX
+function Greeting({ name = "Guest", timeOfDay }) {
+    let message;
 
+    if (timeOfDay === "morning") {
+        message = "Good Morning";
+    } else if (timeOfDay === "afternoon") {
+        message = "Good Afternoon";
+    } else if (timeOfDay === "evening") {
+        message = "Good Evening";
+    } else {
+        message = "Hello";
+    }
+
+    return (
+        <div className="greeting">
+            <h2>{message}, {name}!</h2>
+        </div>
+    );
+}
+
+export default Greeting;
+📌 Usage in App.jsx
+JSX
+import Greeting from "./components/Greeting";
+
+function App() {
+    return (
+        <div>
+            <Greeting name="Pauline" timeOfDay="morning" />
+            <Greeting timeOfDay="evening" />
+        </div>
+    );
+}
+
+export default App;
