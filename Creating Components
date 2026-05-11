@@ -1,1 +1,55 @@
+📌 1. Create a Component (Header.jsx)
+JSX
+function Header() {
+    return (
+        <header className="header">
+            <h1>CommunityHub</h1>
+            <nav>
+                <a href="#">Home</a>
+                <a href="#">Posts</a>
+                <a href="#">About</a>
+            </nav>
+        </header>
+    );
+}
 
+export default Header;
+📌 2. Use Component in App.jsx
+JSX
+import Header from './components/Header';
+
+function App() {
+    return (
+        <div className="app">
+            <Header />
+            <main>
+                <h2>Welcome to CommunityHub</h2>
+            </main>
+        </div>
+    );
+}
+🧱 3. Other Components
+📌 PostCard.jsx
+JSX
+function PostCard() {
+    return (
+        <article className="post-card">
+            <h3>Post Title</h3>
+            <p>Post excerpt goes here...</p>
+            <span>Posted on January 1, 2026</span>
+        </article>
+    );
+}
+
+export default PostCard;
+📌 Footer.jsx
+JSX
+function Footer() {
+    return (
+        <footer className="footer">
+            <p>© 2026 CommunityHub. All rights reserved.</p>
+        </footer>
+    );
+}
+
+export default Footer;
