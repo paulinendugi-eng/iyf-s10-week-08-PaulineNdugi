@@ -1,1 +1,48 @@
-
+1. Children Prop
+Use children to pass content inside a component
+JSX
+function Card({ children, title }) {
+  return (
+    <div className="card">
+      {title && <h3>{title}</h3>}
+      <div>{children}</div>
+    </div>
+  );
+}
+Usage:
+JSX
+<Card title="Hello">
+  <p>Content here</p>
+</Card>
+👉 Anything between <Card>...</Card> becomes children
+🏗️ 2. Layout Component
+Wrap pages with shared UI (Header, Footer, etc.)
+JSX
+function Layout({ children }) {
+  return (
+    <>
+      <Header />
+      <main>{children}</main>
+      <Footer />
+    </>
+  );
+}
+Usage:
+JSX
+<Layout>
+  <h1>Home</h1>
+  <PostList />
+</Layout>
+👉 Layout stays same, only inner content changes
+🔀 3. Conditional Rendering Patterns
+✅ AND (&&)
+Show only if true
+JSX
+{user && <p>Hi {user.name}</p>}
+🔁 Ternary (if/else)
+JSX
+{user ? <p>Welcome</p> : <p>Please login</p>}
+🚪 Early Return
+JSX
+if (!user) return <p>Please login</p>;
+return <p>Welcome {user.name}</p>;
