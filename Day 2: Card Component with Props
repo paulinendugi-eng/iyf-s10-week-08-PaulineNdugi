@@ -1,1 +1,48 @@
+✅ Card.jsx
+JSX
+function Card({ title, children, variant = "primary" }) {
+  return (
+    <div className={`card ${variant}`}>
+      {title && <h3 className="card-title">{title}</h3>}
+      <div className="card-body">{children}</div>
+    </div>
+  );
+}
 
+export default Card;
+🎨 Basic CSS (example)
+CSS
+.card {
+  padding: 16px;
+  border-radius: 10px;
+  margin: 10px 0;
+}
+
+/* Variants */
+.primary {
+  background: #e3f2fd;
+  border: 1px solid #2196f3;
+}
+
+.secondary {
+  background: #f3e5f5;
+  border: 1px solid #9c27b0;
+}
+
+.outlined {
+  background: transparent;
+  border: 2px solid #333;
+}
+🚀 Usage
+JSX
+<Card title="Welcome" variant="primary">
+  This is a primary card.
+</Card>
+
+<Card title="Info" variant="secondary">
+  This is a secondary card.
+</Card>
+
+<Card variant="outlined">
+  This is an outlined card without title.
+</Card>
