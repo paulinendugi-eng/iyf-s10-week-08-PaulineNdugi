@@ -1,1 +1,24 @@
+JSX
+function App() {
+    const name = "Pauline";
+    const isLoggedIn = true;
 
+    const currentDate = new Date().toDateString();
+    const hour = new Date().getHours();
+
+    return (
+        <div>
+            <h1>Hello, I'm {name}!</h1>
+
+            <p>I am learning React step by step.</p>
+            <p>I enjoy building simple web apps.</p>
+            <p>I am improving my JavaScript skills every day.</p>
+
+            <p>Today's date is: {currentDate}</p>
+
+            {hour < 12 && <p>Good morning ☀️</p>}
+            {hour >= 12 && hour < 18 && <p>Good afternoon 🌤️</p>}
+            {hour >= 18 && <p>Good evening 🌙</p>}
+        </div>
+    );
+}
