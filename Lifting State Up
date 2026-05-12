@@ -1,1 +1,46 @@
+JSX
+const [state, setState] = useState()Parent Component
+JSX
+function App() {
+  const [posts, setPosts] = useState([...]);
 
+  const handleLike = (id) => {
+    setPosts(...);
+  };
+
+  return (
+    <>
+      <Stats />
+      <PostList />
+    </>
+  );
+}Child Components
+Receive data
+JSX
+function Stats({ totalLikes }) {
+  return <p>{totalLikes}</p>;
+}
+Receive callback function
+JSX
+function PostCard({ onLike }) {
+  return <button onClick={onLike}>Like</button>;
+}
+Important Patterns
+Pass data down
+JSX
+<PostList posts={posts} />
+Pass functions down
+JSX
+<PostList onLike={handleLike} />
+Child triggers parent update
+JSX
+onClick={onLike}
+Updating Array State
+JSX
+setPosts(
+  posts.map(post =>
+    post.id === id
+      ? { ...post, likes: post.likes + 1 }
+      : post
+  )
+);
