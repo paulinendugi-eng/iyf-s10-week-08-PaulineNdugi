@@ -1,1 +1,72 @@
+JSX
+// Header.jsx
+function Header() {
+  return (
+    <header className="bg-blue-500 text-white p-4">
+      <h1>My Website</h1>
+    </header>
+  );
+}
 
+export default Header;
+JSX
+// Footer.jsx
+function Footer() {
+  return (
+    <footer className="bg-gray-200 p-4 text-center">
+      Footer Content
+    </footer>
+  );
+}
+
+export default Footer;
+JSX
+// PageLayout.jsx
+import Header from "./Header";
+import Footer from "./Footer";
+
+function PageLayout({ children, sidebar }) {
+  return (
+    <div className="min-h-screen flex flex-col">
+      
+      <Header />
+
+      <main className="flex flex-1 flex-col md:flex-row">
+        
+        {/* Sidebar (optional) */}
+        {sidebar && (
+          <aside className="bg-gray-100 p-4 md:w-64">
+            {sidebar}
+          </aside>
+        )}
+
+        {/* Main Content */}
+        <section className="flex-1 p-4">
+          {children}
+        </section>
+
+      </main>
+
+      <Footer />
+
+    </div>
+  );
+}
+
+export default PageLayout;
+JSX
+// App.jsx
+import PageLayout from "./PageLayout";
+
+function App() {
+  return (
+    <PageLayout
+      sidebar={<p>Sidebar Menu</p>}
+    >
+      <h2>Home Page</h2>
+      <p>Welcome to the website!</p>
+    </PageLayout>
+  );
+}
+
+export default App;
