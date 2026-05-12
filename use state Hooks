@@ -1,1 +1,30 @@
-
+🟢 Exercise 1: Counter
+Key idea:
+count = current value
+setCount = update function
+JavaScript
+setCount(count + 1)   // increment
+setCount(count - 1)   // decrement
+setCount(0)           // reset
+🟢 Exercise 2: Toggle
+Key idea:
+Boolean state (true/false)
+JavaScript
+const [isOn, setIsOn] = useState(false);
+Toggle logic:
+JavaScript
+setIsOn(!isOn)
+👉 flips ON ↔ OFF
+🟢 Exercise 3: Multiple States
+Key idea:
+Each input has its own state
+JavaScript
+const [name, setName] = useState('');
+const [email, setEmail] = useState('');
+const [age, setAge] = useState(0);
+Input handling:
+JavaScript
+onChange={(e) => setName(e.target.value)}
+Number input:
+JavaScript
+setAge(Number(e.target.value))
