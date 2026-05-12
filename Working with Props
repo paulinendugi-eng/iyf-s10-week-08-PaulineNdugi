@@ -1,1 +1,38 @@
-
+1. Passing Props
+Send data from parent → child
+JSX
+<Greeting name="Alice" />
+JSX
+function Greeting({ name }) {
+  return <h2>Hello, {name}!</h2>;
+}
+👉 props = input to components
+2. Multiple Props (PostCard)
+JSX
+function PostCard({ title, excerpt, author, date }) {
+  return (
+    <article>
+      <h3>{title}</h3>
+      <p>{excerpt}</p>
+      <small>{author} | {date}</small>
+    </article>
+  );
+}
+Usage:
+JSX
+<PostCard title="React" excerpt="Learn React..." author="John" date="Jan 1" />
+3. Rendering Lists (map + key)
+JSX
+{posts.map(post => (
+  <PostCard key={post.id} {...post} />
+))}
+✔ Always use key (unique id)
+4. Default Props
+JSX
+function Button({ text = "Click me", variant = "primary" }) {
+  return <button className={variant}>{text}</button>;
+}
+Usage:
+JSX
+<Button /> // uses defaults
+<Button text="Save" />
