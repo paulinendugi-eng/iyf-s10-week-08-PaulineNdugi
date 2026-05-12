@@ -1,1 +1,106 @@
+JSX
+// Button.jsx
+function Button({
+  text = "Click Me",
+  onClick,
+  variant = "primary",
+  disabled = false,
+  size = "medium",
+  loading = false
+}) {
+  return (
+    <button
+      onClick={onClick}
+      disabled={disabled || loading}
+      className={`btn ${variant} ${size}`}
+    >
+      {loading ? "Loading..." : text}
+    </button>
+  );
+}
 
+export default Button;
+JSX
+// App.jsx
+import Button from "./Button";
+
+function App() {
+  return (
+    <div>
+      <Button
+        text="Save"
+        variant="primary"
+        size="large"
+        onClick={() => alert("Saved!")}
+      />
+
+      <Button
+        text="Cancel"
+        variant="secondary"
+        size="medium"
+      />
+
+      <Button
+        text="Delete"
+        variant="danger"
+        size="small"
+      />
+
+      <Button
+        text="Submitting"
+        loading={true}
+      />
+
+      <Button
+        text="Disabled"
+        disabled={true}
+      />
+    </div>
+  );
+}
+
+export default App;
+CSS
+/* styles.css */
+.btn {
+  border: none;
+  cursor: pointer;
+  margin: 5px;
+  border-radius: 5px;
+  color: white;
+}
+
+/* Variants */
+.primary {
+  background: blue;
+}
+
+.secondary {
+  background: gray;
+}
+
+.danger {
+  background: red;
+}
+
+/* Sizes */
+.small {
+  padding: 5px 10px;
+  font-size: 12px;
+}
+
+.medium {
+  padding: 10px 15px;
+  font-size: 16px;
+}
+
+.large {
+  padding: 15px 20px;
+  font-size: 20px;
+}
+
+/* Disabled */
+button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
