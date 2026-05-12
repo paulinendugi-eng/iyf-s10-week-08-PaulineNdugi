@@ -1,1 +1,45 @@
+useState with Array
+JSX
+const [todos, setTodos] = useState([]);
+Add Item
+JSX
+setTodos([...todos, newTodo]);
+Example:
+JSX
+setTodos([
+  ...todos,
+  { id: Date.now(), text: inputValue, completed: false }
+]);
+Update Item
+Use map()
+JSX
+setTodos(
+  todos.map(todo =>
+    todo.id === id
+      ? { ...todo, completed: !todo.completed }
+      : todo
+  )
+);
+Delete Item
+Use filter()
+JSX
+setTodos(
+  todos.filter(todo => todo.id !== id)
+);
+Input State
+JSX
+const [inputValue, setInputValue] = useState('');
+JSX
+onChange={(e) => setInputValue(e.target.value)}
+Important Rule
+❌ Never mutate state directly
+Wrong:
+JSX
+todos.push(newTodo);
+todo.completed = true;
+✅ Always create new arrays/objects
+Correct:
+JSX
+setTodos([...todos, newTodo]);
 
+{ ...todo, completed: true }
