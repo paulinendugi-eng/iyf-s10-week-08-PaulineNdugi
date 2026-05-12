@@ -1,1 +1,129 @@
+JSX
+// Click event
+<button onClick={handleClick}>Click</button>
 
+// Input button 
+<input onChange={handleInput} />
+
+// Pass parameter
+<button onClick={() => handleItemClick(1)}>
+  Item
+</button>
+
+// Prevent form refresh
+<form onSubmit={(e) => e.preventDefault()}>
+Event Handler Patterns
+JSX
+function EventExamples() {
+
+  // Basic click
+  const handleClick = () => {
+    console.log("Clicked!");
+  };
+
+  // Input event
+  const handleInput = (e) => {
+    console.log(e.target.value);
+  };
+
+  // Custom parameter
+  const handleItemClick = (id) => {
+    console.log("Item:", id);
+  };
+
+  return (
+    <div>
+
+      <button onClick={handleClick}>
+        Click Me
+      </button>
+
+      <input
+        onChange={handleInput}
+        placeholder="Type here"
+      />
+
+      <button onClick={() => handleItemClick(123)}>
+        Item 123
+      </button>
+
+      <form onSubmit={(e) => {
+        e.preventDefault();
+        console.log("Form submitted");
+      }}>
+        <button type="submit">
+          Submit
+        </button>
+      </form>
+
+    </div>
+  );
+}
+Controlled Form Example
+JSX
+import { useState } from "react";
+
+function ContactForm() {
+
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    message: ""
+  });
+
+  // Handle input changes
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+
+    setFormData((prev) => ({
+      ...prev,
+      [name]: value
+    }));
+  };
+
+  // Submit form
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    console.log(formData);
+
+    // Reset form
+    setFormData({
+      name: "",
+      email: "",
+      message: ""
+    });
+  };
+
+  return (
+    <form onSubmit={handleSubmit}>
+
+      <input
+        name="name"
+        value={formData.name}
+        onChange={handleChange}
+        placeholder="Name"
+      />
+
+      <input
+        name="email"
+        type="email"
+        value={formData.email}
+        onChange={handleChange}
+        placeholder="Email"
+      />
+
+      <textarea
+        name="message"
+        value={formData.message}
+        onChange={handleChange}
+        placeholder="Message"
+      />
+
+      <button type="submit">
+        Send
+      </button>
+
+    </form>
+  );
+}
